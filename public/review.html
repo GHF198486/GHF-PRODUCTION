@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<title>تقييم Golden Honey Fusion</title>
+
+<style>
+
+body{
+background:#000;
+color:#d4af37;
+font-family:Arial,Tahoma;
+padding:25px;
+font-size:20px;
+}
+
+.box{
+max-width:650px;
+margin:auto;
+border:1px solid #d4af37;
+border-radius:18px;
+padding:30px;
+background:#080808;
+}
+.logo{
+display:block;
+width:150px;
+max-width:70%;
+margin:0 auto 25px;
+}
+h1{
+text-align:center;
+font-size:34px;
+line-height:1.6;
+}
+
+h2{
+font-size:28px;
+margin-top:40px;
+}
+
+.question{
+margin-top:20px;
+color:white;
+font-size:23px;
+}
+
+.stars{
+font-size:45px;
+direction:ltr;
+cursor:pointer;
+margin-top:15px;
+}
+
+.stars span{
+color:#555;
+}
+
+.stars span.active{
+color:#d4af37;
+}
+
+
+textarea{
+
+width:100%;
+height:180px;
+margin-top:20px;
+
+background:#111;
+color:white;
+
+border:1px solid #d4af37;
+border-radius:12px;
+
+padding:15px;
+
+font-size:20px;
+
+}
+
+
+button{
+
+margin-top:30px;
+
+width:100%;
+
+padding:18px;
+
+background:#d4af37;
+
+border:0;
+
+border-radius:12px;
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+<img src="ghf-logo.png" class="logo">
+
+<h1>
+تقييم تجربتكم مع<br>
+Golden Honey Fusion
+</h1>
+
+
+<div id="products"></div>
+
+
+
+<h2>
+التقييم العام للتجربة
+</h2>
+<h2>
+هوية وشكل Golden Honey Fusion
+</h2>
+
+<div class="question">
+فخامة التصميم والتغليف
+</div>
+
+<div class="stars" data-value="0">
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+</div>
+
+
+<div class="question">
+تجربة فتح المنتج والعرض
+</div>
+
+<div class="stars" data-value="0">
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+</div>
+<h2>
+تقييم خدمة التوصيل
+</h2>
+
+<div class="question">
+سرعة التسليم
+</div>
+
+<div class="stars" data-value="0" data-type="delivery">
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+</div>
+
+
+<div class="question">
+الالتزام بالوقت المتفق عليه
+</div>
+
+<div class="stars" data-value="0" data-type="delivery">
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+</div>
+<div class="question">
+كيف كانت تجربتكم مع Golden Honey Fusion؟
+</div>
+
+
+<div class="stars" data-value="0" data-type="brand">
+
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+
+</div>
+
+
+
+
+
+<h2>
+ملاحظاتكم وتجربتكم
+</h2>
+
+
+<textarea id="comment" placeholder="اكتبوا رأيكم وتجربتكم معنا..."></textarea>
+
+
+<button id="submitReview">
+إرسال التقييم
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+const orderId =
+new URLSearchParams(location.search).get("id");
+
+
+
+async function loadReview(){
+
+
+const r =
+await fetch('/api/review/'+orderId);
+
+
+const data =
+await r.json();
+
+
+
+const box =
+document.getElementById("products");
+
+
+
+const uniqueProducts = [...new Set(data.items.map(item=>item.product))];
+
+uniqueProducts.forEach(product=>{
+
+
+box.innerHTML += `
+
+
+<h2>
+${product}
+</h2>
+
+
+<div class="question">
+الطعم والرائحة
+</div>
+
+
+<div class="stars" data-value="0" data-type="product">
+
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+
+</div>
+
+
+
+
+<div class="question">
+القوام والجودة
+</div>
+
+
+<div class="stars" data-value="0" data-type="product">
+
+<span data-star="1">★</span>
+<span data-star="2">★</span>
+<span data-star="3">★</span>
+<span data-star="4">★</span>
+<span data-star="5">★</span>
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+document.addEventListener("click",function(e){
+
+
+if(e.target.dataset.star){
+
+
+const star =
+e.target;
+
+
+const box =
+star.parentElement;
+
+
+const value =
+Number(star.dataset.star);
+
+
+
+box.dataset.value=value;
+
+
+
+box.querySelectorAll("span").forEach(s=>{
+
+
+s.classList.toggle(
+"active",
+Number(s.dataset.star)<=value
+);
+
+
+
+});
+
+
+
+}
+
+
+});
+
+
+document.getElementById("submitReview").onclick=async function(){
+
+const products=[];
+
+const productTitles=document.querySelectorAll("#products h2");
+
+
+productTitles.forEach((title)=>{
+
+let next=title.nextElementSibling;
+
+let productStars=[];
+
+
+while(next && productStars.length<2){
+
+if(next.classList && next.classList.contains("stars")){
+productStars.push(next);
+}
+
+next=next.nextElementSibling;
+
+}
+
+
+products.push({
+
+name:title.innerText,
+
+taste:Number(productStars[0]?.dataset.value||0),
+
+quality:Number(productStars[1]?.dataset.value||0)
+
+});
+
+
+});
+
+
+const comment=document.getElementById("comment").value;
+
+
+const brandStars=document.querySelector(".stars[data-type='brand']");
+
+const deliveryStars=document.querySelectorAll(".stars[data-type='delivery']");
+
+
+let deliveryRating=[];
+
+deliveryStars.forEach(s=>{
+
+deliveryRating.push(
+Number(s.dataset.value||0)
+);
+
+});
+
+
+
+const data={
+
+orderId:orderId,
+
+products:products,
+
+brandRating:Number(brandStars?.dataset.value||0),
+
+deliveryRating:deliveryRating,
+
+comment:comment
+
+};
+
+
+
+try{
+
+
+const r=await fetch('/api/review/submit',{
+
+method:'POST',
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(data)
+
+});
+
+
+const result=await r.json();
+
+
+
+if(result.ok){
+
+alert("شكراً لكم، تم إرسال تقييمكم بنجاح ❤️");
+
+}else{
+
+alert(result.error||"حدث خطأ");
+
+}
+
+
+
+}catch(e){
+
+console.log(e);
+
+alert("تعذر إرسال التقييم");
+
+}
+
+
+};
+loadReview();
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

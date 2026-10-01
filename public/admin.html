@@ -1,118 +1,290 @@
 
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
 <meta charset="UTF-8">
 <title>GHF ADMIN</title>
 <style>
+
+*{
+box-sizing:border-box;
+}
+
 html,body{
-    background:radial-gradient(circle at top,#17130b 0,#050505 55%,#020202 100%) !important;
-    color:#eee8da;
-    min-height:100%;
-    font-family:Arial,sans-serif;
-    padding:20px;
+direction:rtl;
+text-align:right;
+background:
+radial-gradient(circle at top,#1b160c 0,#080808 45%,#020202 100%) !important;
+color:#eee8da;
+min-height:100%;
+font-family:Tahoma,Arial,sans-serif;
+padding:12px;
+margin:0;
+}
+
+body{
+max-width:1100px;
+margin:0 auto;
 }
 
 h1{
 text-align:center;
 font-family:Georgia,serif;
-color:#fff;
+font-size:30px;
+line-height:1.45;
+color:#f5df9b;
 letter-spacing:1px;
+margin:18px 0 28px;
+text-shadow:0 0 18px rgba(212,170,70,.25);
 }
+
+h3{
+margin:0 0 18px;
+}
+
 .card{
-border:1px solid #4b3916;
-padding:25px;
-margin:25px 0;
-border-radius:16px;
-background:#090909;
-box-shadow:0 10px 30px #000;
-font-size:22px;
-line-height:1.9;
+border:1px solid #5b451b;
+padding:22px;
+margin:18px 0;
+border-radius:18px;
+background:linear-gradient(145deg,#0d0d0d,#070707);
+box-shadow:
+0 12px 35px rgba(0,0,0,.55),
+inset 0 1px 0 rgba(232,207,135,.06);
+font-size:18px;
+line-height:1.8;
 }
+
 .card h3{
-font-size:26px;
+font-size:23px;
 color:#e8cf87;
+font-weight:bold;
 }
 
 .card b{
-font-size:24px;
+font-size:18px;
 color:#e8cf87;
 }
 
 .card p{
-font-size:26px;
-margin:8px 0 18px;
+font-size:18px;
+margin:8px 0 16px;
 }
+
 button{
-background:linear-gradient(180deg,#d9b95f,#9d7626);
+background:linear-gradient(180deg,#e2c66e,#a77d28);
 color:#080808;
-border:1px solid #e8cf87;
-padding:11px 22px;
-border-radius:9px;
+border:1px solid #f0d98b;
+padding:11px 20px;
+border-radius:10px;
 cursor:pointer;
 font-weight:bold;
+font-size:15px;
+margin:5px 3px;
+box-shadow:0 5px 14px rgba(0,0,0,.35);
 }
-.ghf-brand{
- text-align:center;
- margin:20px 0;
- background:#050505;
+
+button:active{
+transform:scale(.98);
 }
 
 .ghf-brand{
- text-align:center;
- margin:15px 0;
+text-align:center;
+margin:10px 0 5px;
+background:transparent;
 }
 
 .ghf-logo{
- width:350px !important;
- max-width:90%;
- height:auto;
- display:block;
- margin:20px auto;
- filter:drop-shadow(0 0 12px rgba(212,170,70,.6));
+width:260px !important;
+max-width:82%;
+height:auto;
+display:block;
+margin:8px auto;
+filter:drop-shadow(0 0 14px rgba(212,170,70,.55));
 }
+
+#stats{
+display:grid !important;
+grid-template-columns:repeat(3,1fr);
+gap:12px !important;
+margin:22px 0 !important;
+}
+
 .stat{
-background:#090909;
+background:linear-gradient(145deg,#0e0e0e,#080808);
 border:1px solid #4b3916;
-border-radius:12px;
-padding:15px;
+border-radius:14px;
+padding:13px 8px;
 color:#e8cf87;
 font-size:15px;
-min-width:90px;
+min-width:0;
+min-height:72px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+box-shadow:0 7px 20px rgba(0,0,0,.35);
 }
 
 .stat b{
 display:block;
-font-size:24px;
-margin-top:8px;
+font-size:22px;
+margin-top:5px;
+color:#f5df9b;
 }
+
 .privilege-box{
 cursor:pointer;
-min-width:220px;
+width:auto;
+height:auto;
+min-height:82px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 .gold-stars{
-margin-top:12px;
-font-size:28px;
+margin-top:8px;
+font-size:18px;
 color:#e8cf87;
 text-shadow:0 0 12px #d4aa46;
-letter-spacing:5px;
+letter-spacing:3px;
 }
+
+input{
+background:#111;
+color:#eee8da;
+border:1px solid #5b451b;
+border-radius:9px;
+font-size:16px;
+}
+
+input:focus{
+outline:none;
+border-color:#e8cf87;
+box-shadow:0 0 10px rgba(232,207,135,.18);
+}
+
+.admin-sections{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin:22px 0;
+}
+
+.admin-section{
+min-height:105px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+cursor:pointer;
+border:1px solid #66501f;
+border-radius:16px;
+background:linear-gradient(145deg,#12100b,#080808);
+color:#f0d98b;
+font-size:18px;
+font-weight:bold;
+padding:16px 10px;
+box-shadow:0 8px 22px rgba(0,0,0,.4);
+transition:.2s;
+}
+
+.admin-section:hover{
+border-color:#e8cf87;
+box-shadow:0 0 20px rgba(212,170,70,.18);
+}
+
+.admin-section .gold-stars{
+margin-top:10px;
+font-size:14px;
+}
+
+@media(max-width:600px){
+
+.admin-sections{
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.admin-section{
+min-height:75px;
+font-size:17px;
+padding:12px;
+}
+
+}
+
+html,body{
+padding:8px;
+}
+
+h1{
+font-size:24px;
+margin:12px 0 20px;
+}
+
+.ghf-logo{
+width:220px !important;
+max-width:78%;
+}
+
+.card{
+padding:17px;
+margin:14px 0;
+border-radius:15px;
+font-size:16px;
+}
+
+.card h3{
+font-size:20px;
+}
+
+.card p,
+.card b{
+font-size:16px;
+}
+
+button{
+width:auto;
+padding:10px 15px;
+font-size:14px;
+}
+
+#stats{
+grid-template-columns:repeat(2,1fr) !important;
+gap:9px !important;
+}
+
+.stat{
+min-height:68px;
+font-size:14px;
+padding:10px 5px;
+}
+
+.stat b{
+font-size:20px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div id="loginBox" class="card" style="display:none;max-width:400px;margin:40px auto;text-align:center;">
+<div id="loginBox" class="card" style="display:none;
 
-<h3>GHF ADMIN LOGIN</h3>
+<h3>تسجيل دخول الإدارة</h3>
 
-<input id="adminUser" placeholder="Username" style="padding:12px;width:90%;margin:8px;"><br>
+<input id="adminUser" placeholder="اسم المستخدم" style="padding:12px;width:90%;margin:8px;"><br>
 
-<input id="adminPass" type="password" placeholder="Password" style="padding:12px;width:90%;margin:8px;"><br>
+<input id="adminPass" type="password" placeholder="كلمة المرور"style="padding:12px;width:90%;margin:8px;"><br>
 
-<button onclick="adminLogin()">LOGIN</button>
+<button onclick="adminLogin()">دخول</button>
 
 <p id="loginMsg"></p>
 
@@ -122,25 +294,64 @@ letter-spacing:5px;
 <div class="ghf-brand">
   <img src="ghf-logo.png" class="ghf-logo">
 </div>
-<h1>GOLDEN HONEY FUSION<br>ADMIN DASHBOARD</h1>
+<h1>لوحة إدارة<br>GOLDEN HONEY FUSION</h1>
 
-<button onclick="loadOrders()">REFRESH</button>
+<button onclick="loadOrders()">تحديث</button>
+<button onclick="openRatings()">تقييمات وآراء العملاء</button>
+<div id="ratingPanel" class="card" style="display:none;width:100%;margin-top:20px;">
+
+<h3>تقييمات وآراء العملاء</h3>
+
+<p style="color:#e8cf87">
+✦ ✦ ✦ ✦ ✦
+</p>
+
+<div id="ratingList">
+جاري تحميل التقييمات...
+</div>
+
+</div>
 <div id="stats" style="
 display:flex;
-gap:10px;
+gap:15px;
 flex-wrap:wrap;
+justify-content:center;
 margin:20px 0;
 ">
 
-<div class="stat">TOTAL <b id="totalCount">0</b></div>
-<div class="stat">SALES <b id="salesTotal">$0</b></div>
-<div class="stat">NEW <b id="newCount">0</b></div>
-<div class="stat">CONFIRMED <b id="confirmedCount">0</b></div>
-<div class="stat">SHIPPED <b id="shippedCount">0</b></div>
-<div class="stat">DELIVERED <b id="deliveredCount">0</b></div>
-<div class="stat privilege-box" onclick="openPrivileges()">
+<div class="stat">الإجمالي <b id="totalCount">0</b></div>
+<div class="stat">المبيعات <b id="salesTotal">$0</b></div>
+<div class="stat">جديد <b id="newCount">0</b></div>
+<div class="stat">تم التأكيد <b id="confirmedCount">0</b></div>
+<div class="stat">تم الشحن <b id="shippedCount">0</b></div>
+<div class="stat">تم التسليم <b id="deliveredCount">0</b></div>
+</div>
+<div class="admin-sections">
+<div class="admin-section" onclick="openOrders()">
 
-GHF PURCHASE PRIVILEGES
+الطلبات
+
+<div class="gold-stars">
+✦ ✦ ✦ ✦ ✦
+</div>
+
+</div>
+
+
+<div class="admin-section" onclick="openPrivileges()">
+
+امتيازات الشراء
+
+<div class="gold-stars">
+✦ ✦ ✦ ✦ ✦
+</div>
+
+</div>
+
+
+<div class="admin-section" onclick="openReviews()">
+
+إرسال طلب التقييم عبر واتساب
 
 <div class="gold-stars">
 ✦ ✦ ✦ ✦ ✦
@@ -148,57 +359,90 @@ GHF PURCHASE PRIVILEGES
 
 </div>
 </div>
+<div id="privilegePanel" class="card" style="display:none;width:100%;margin-top:20px;">
 
-<div id="privilegePanel" class="card" style="display:none;">
-
-<h3>GHF PURCHASE PRIVILEGES</h3>
+<h3>امتيازات الشراء</h3>
 
 <p style="color:#e8cf87">
 ✦ ✦ ✦ ✦ ✦
 </p>
 
+<p>
 <div id="privilegeList">
-  Privilege movements will appear here.
+ستظهر حركات الامتيازات هنا.
 </div>
 
 </div>
+<div id="reviewPanel" class="card" style="display:none;width:100%;margin-top:20px;">
 
-<div id="orders"></div>
+<h3>تقييمات العملاء</h3>
+
+<p style="color:#e8cf87">
+✦ ✦ ✦ ✦ ✦
+</p>
+
+<div id="reviewList">
+ستظهر تقييمات العملاء هنا.
+</div>
+
+</div>
+<div id="orders" class="card" style="display:none;width:100%;margin-top:20px;">
+
+<input
+id="orderSearch"
+type="text"
+placeholder="ابحث برقم الطلب أو رقم الهاتف..."
+oninput="filterOrders()"
+style="
+width:100%;
+padding:12px 14px;
+margin-bottom:16px;
+font-size:17px;
+text-align:right;
+"
+><select
+id="orderStatusFilter"
+onchange="filterOrders()"
+style="
+width:100%;
+padding:12px 14px;
+margin-bottom:16px;
+font-size:17px;
+text-align:right;
+background:#111;
+color:#eee8da;
+border:1px solid #5b451b;
+border-radius:9px;
+"
+>
+<option value="">كل الطلبات</option>
+<option value="NEW">جديد</option>
+<option value="CONFIRMED">تم التأكيد</option>
+<option value="SHIPPED">تم الشحن</option>
+<option value="DELIVERED">تم التسليم</option>
+</select>
+
+<div id="ordersList"></div>
+
+</div>
 <script>
-let privilegesData = {privileges:[]};
-
-
 let adminToken = localStorage.getItem("ghfAdminToken");
 async function adminLogin(){
 document.getElementById("loginBox").style.display="none";
 document.getElementById("dashboard").style.display="block";
 loadOrders();
-loadPrivileges();
 }
-document.getElementById("loginBox").style.display="none";
-document.getElementById("dashboard").style.display="block";
-
-loadOrders();
-
 
 async function loadOrders(){
-
+alert("LOAD ORDERS START");
 const box=document.getElementById("orders");
 
 try{
 
-const r=await fetch('/api/orders');
+const r=await fetch('http://127.0.0.1:3000/api/orders');
 const data=await r.json();
-data.orders = data.orders || [];
-try{
- const p=await fetch('/api/admin/privileges');
- if(p.ok){
-   privilegesData=await p.json();
-   window.privilegesData = privilegesData;
- }
-}catch(e){
- console.log("Privileges load skipped");
-}
+const p=await fetch('http://127.0.0.1:3000/api/admin/privileges');
+const privilegesData=await p.json();
 
 const privilegeList=document.getElementById("privilegeList");
 
@@ -210,26 +454,77 @@ if(privilegesData.privileges && privilegesData.privileges.length){
 
     privilegeList.innerHTML += `
     <div style="border-bottom:1px solid #4b3916;padding:12px 0">
+
       <b>${p.customer}</b><br>
-      Order: ${p.orderId}<br>
-      Purchase: $${p.amount}<br>
-      Privilege: ${(p.rate*100).toFixed(1)}%<br>
-      Earned: $${p.earned}<br>
-      Valid until: ${formatDate(p.expiresAt)}
-${p.sent ? 
-`<button disabled style="margin-top:8px;opacity:.5">PRIVILEGE SENT</button>`
-:
-`<button onclick="sendPrivilege('${p.id}','${p.phone}')" style="margin-top:8px">
-SEND WHATSAPP
-</button>`
-}
- </div>`;
+
+      الطلب: ${p.orderId}<br>
+
+      قيمة الشراء: $${p.amount}<br>
+
+      نسبة الامتياز: ${(p.rate*100).toFixed(1)}%<br>
+
+      قيمة الامتياز: $${p.earned}<br>
+
+      كود الامتياز: ${p.code}<br>
+
+      صالح حتى: ${new Date(p.expiresAt).toLocaleDateString('en-GB')}
+
+      ${
+        p.sent
+        ? '<button disabled style="margin-top:8px">تم الإرسال ✓</button>'
+        : `<button onclick="sendPrivilege('${p.id}','${p.phone}',this)" style="margin-top:8px">إرسال عبر واتساب</button>`
+      }
+
+    </div>
+    `;
   });
 
 }else{
-  privilegeList.innerHTML="No privilege movements yet.";
+
+  privilegeList.innerHTML="ستظهر حركات الامتيازات هنا.";
+
+}
+const reviewList=document.getElementById("reviewList");
+
+let reviewsData={reviews:[]};
+
+try{
+ const reviewRes=await fetch('http://127.0.0.1:3000/api/admin/reviews');
+ reviewsData=await reviewRes.json();
+}catch(e){
+ console.log("Reviews not loaded",e);
 }
 
+if(reviewsData.reviews && reviewsData.reviews.length){
+
+  reviewList.innerHTML="";
+
+  reviewsData.reviews.forEach(r=>{
+
+    reviewList.innerHTML += `
+    <div style="border-bottom:1px solid #4b3916;padding:12px 0">
+
+      <b>${r.customer}</b><br>
+
+      الطلب: ${r.orderId}<br>
+
+تاريخ الشراء:
+${new Date(r.createdAt).toLocaleDateString('en-GB')}<br>
+<button
+onclick="sendReview('${r.id}','${r.phone}',this)"
+style="margin-top:8px">
+إرسال طلب التقييم عبر واتساب
+</button>
+    </div>
+    `;
+
+  });
+
+}else{
+
+reviewList.innerHTML="ستظهر طلبات التقييم هنا.";
+
+}
 document.getElementById("totalCount").textContent=data.orders.length;
 document.getElementById("salesTotal").textContent="$"+data.orders.reduce((sum,o)=>sum+Number(o.subtotal||0),0).toFixed(2);
 document.getElementById("newCount").textContent=data.orders.filter(o=>o.status==="NEW").length;
@@ -238,17 +533,24 @@ document.getElementById("shippedCount").textContent=data.orders.filter(o=>o.stat
 document.getElementById("deliveredCount").textContent=data.orders.filter(o=>o.status==="DELIVERED").length;
 data.orders.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
 
-box.innerHTML="";
+const ordersList=document.getElementById("ordersList");
+
+ordersList.innerHTML="";
 
 data.orders.forEach(o=>{
 
-box.innerHTML += `
-<div class="card" onclick="toggleOrder('${o.id}')" style="cursor:pointer;">
+ordersList.innerHTML += `
+<div class="card"
+onclick="toggleOrder('${o.id}')"
+data-order-number="${o.orderNumber || o.id}"
+data-phone="${o.customer?.phone || ''}"
+data-status="${o.status || ''}"
+style="cursor:pointer;">
 
 <div style="display:flex;justify-content:space-between;align-items:center">
 
 <div>
-<h3 style="margin:0">${o.id}</h3>
+<h3 style="margin:0">${o.orderNumber || o.id}</h3>
 <div style="font-size:14px;color:#aaa08f;margin-top:8px">
 ${new Date(o.createdAt).toLocaleString()}
 </div>
@@ -275,23 +577,23 @@ ${o.status} — $${o.total}
 
 <div class="info">
 
-<b>CUSTOMER</b>
+<b>العميل</b>
 <p>${o.customer?.name || ''}</p>
 
-<b>PHONE</b>
+<b>الهاتف</b>
 <p>${o.customer?.phone || ''}</p>
 
-<b>ADDRESS</b>
+<b>العنوان</b>
 <p>${o.customer?.address || ''}</p>
 
-<b>ITEMS</b>
+<b>المنتجات</b>
 <p>
 ${(o.items||[]).map(i=>`
 ${i.product} - ${i.weight||''} × ${i.qty||1}<br>
 `).join('')}
 </p>
 
-<b>TOTAL</b>
+<b>الإجمالي</b>
 <p style="font-size:22px">
 $${o.total}
 </p>
@@ -305,10 +607,40 @@ $${o.total}
 
 }catch(e){
 
-alert("ADMIN ERROR: "+e.message);
-box.innerHTML="ERROR: "+e.message;
+box.innerHTML="حدث خطأ: "+e.message;
 
 }
+
+}
+function filterOrders(){
+
+const input=document.getElementById("orderSearch");
+const statusFilter=document.getElementById("orderStatusFilter");
+
+const value=input.value.trim().toLowerCase();
+const status=statusFilter.value;
+
+document.querySelectorAll("#ordersList > .card").forEach(card=>{
+
+const orderNumber=(card.dataset.orderNumber || "").toLowerCase();
+const phone=(card.dataset.phone || "").toLowerCase();
+const orderStatus=card.dataset.status || "";
+
+const searchMatch=
+!value ||
+orderNumber.includes(value) ||
+phone.includes(value);
+
+const statusMatch=
+!status ||
+orderStatus===status;
+
+card.style.display=
+searchMatch && statusMatch
+?"block"
+:"none";
+
+});
 
 }
 function toggleOrder(id){
@@ -325,59 +657,461 @@ arrow.innerHTML="▼";
 }
 
 }
-function formatDate(x){
- const d=new Date(x);
- return String(d.getDate()).padStart(2,'0')+'/'+
- String(d.getMonth()+1).padStart(2,'0')+'/'+
- d.getFullYear();
+function hideAdminPanels(){
+
+document.getElementById("orders").style.display="none";
+document.getElementById("privilegePanel").style.display="none";
+document.getElementById("reviewPanel").style.display="none";
+document.getElementById("ratingPanel").style.display="none";
+
 }
 
-async function sendPrivilege(id,phone){
 
-const item = (window.privilegesData?.privileges || []).find(x=>x.id===id);
-
-if(!item || !phone){
- alert("Customer WhatsApp number missing");
- return;
-}
-
- const text=`GOLDEN HONEY FUSION
-
-Dear Valued Customer,
-
-Your GHF Purchase Privilege has been updated successfully.
-
-Privilege Code: ${item.code}
-
-Privilege Earned: $${item.earned}
-Valid Until: ${formatDate(item.expiresAt)}
-
-Thank you for your trust and for choosing Golden Honey Fusion.
-
-With appreciation,
-Golden Honey Fusion`;
-
- window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(text),"_blank");
-
- await fetch('/api/admin/privileges/'+id+'/sent',{
-   method:'POST'
- });
-
- loadOrders();
-}
-}
 function openPrivileges(){
 
 const box=document.getElementById("privilegePanel");
 
-if(box.style.display==="none"){
-box.style.display="block";
-}else{
+if(box.style.display==="block"){
 box.style.display="none";
+return;
+}
+
+hideAdminPanels();
+
+box.style.display="block";
+
+}
+
+
+function openOrders(){
+
+const box=document.getElementById("orders");
+
+if(box.style.display==="block"){
+box.style.display="none";
+return;
+}
+
+hideAdminPanels();
+
+box.style.display="block";
+
+}
+
+
+function openReviews(){
+
+const box=document.getElementById("reviewPanel");
+
+if(box.style.display==="block"){
+box.style.display="none";
+return;
+}
+
+hideAdminPanels();
+
+box.style.display="block";
+
+}
+
+
+function openRatings(){
+
+const box=document.getElementById("ratingPanel");
+
+if(box.style.display==="block"){
+box.style.display="none";
+return;
+}
+
+hideAdminPanels();
+
+box.style.display="block";
+
+loadRatings();
+
+}
+
+
+async function sendReview(id,phone,btn){
+
+const ok=confirm("إرسال طلب التقييم عبر واتساب؟");
+if(!ok)return;
+
+if(!phone){
+alert("رقم هاتف الزبون غير موجود");
+return;
+}
+
+const customerName=document.querySelector(
+`#reviewList button[onclick*="${id}"]`
+)?.parentElement?.querySelector("b")?.innerText || "";
+
+const reviewLink=`https://refine-ssl-how-environment.trycloudflare.com/review.html?id=${id}`;
+
+const reviewText=`GOLDEN HONEY FUSION
+
+Mr/Ms ${customerName}،
+
+يسعدنا أن نعرف رأيكم بتجربتكم معنا.
+
+تقييمكم يهمّنا، ومشاركتكم لرأيكم جزء من امتيازاتكم الخاصة مع Golden Honey Fusion.
+
+تقييمكم:
+${reviewLink}
+
+مع خالص التقدير،
+GHF`;
+window.open(
+  `https://wa.me/${phone}?text=${encodeURIComponent(reviewText)}`,
+  "_blank"
+);
+
+}
+async function loadRatings(){
+
+const list=document.getElementById("ratingList");
+
+try{
+
+const r=await fetch('/api/admin/ratings');
+const data=await r.json();
+
+const reviews=data.reviews || [];
+
+if(!reviews.length){
+list.innerHTML="لا توجد تقييمات للعملاء حتى الآن.";
+return;
+}
+
+/* =========================
+   CALCULATE SUMMARY
+========================= */
+
+let brandTotal=0;
+let brandCount=0;
+
+let deliveryTotal=0;
+let deliveryCount=0;
+
+let tasteTotal=0;
+let tasteCount=0;
+
+let qualityTotal=0;
+let qualityCount=0;
+
+let overallTotal=0;
+let overallCount=0;
+
+const productsStats={};
+
+reviews.forEach(r=>{
+
+/* BRAND */
+
+if(Number.isFinite(Number(r.brandRating))){
+brandTotal+=Number(r.brandRating);
+brandCount++;
+overallTotal+=Number(r.brandRating);
+overallCount++;
+}
+
+/* DELIVERY */
+
+if(Array.isArray(r.deliveryRating)){
+
+r.deliveryRating.forEach(v=>{
+
+if(Number.isFinite(Number(v))){
+
+deliveryTotal+=Number(v);
+deliveryCount++;
+
+overallTotal+=Number(v);
+overallCount++;
+
+}
+
+});
+
+}
+
+/* PRODUCTS */
+
+(r.products || []).forEach(p=>{
+
+const name=p.name || "Unknown Product";
+
+if(!productsStats[name]){
+productsStats[name]={
+tasteTotal:0,
+tasteCount:0,
+qualityTotal:0,
+qualityCount:0
+};
+}
+
+if(Number.isFinite(Number(p.taste))){
+
+productsStats[name].tasteTotal+=Number(p.taste);
+productsStats[name].tasteCount++;
+
+overallTotal+=Number(p.taste);
+overallCount++;
+
+}
+
+if(Number.isFinite(Number(p.quality))){
+
+productsStats[name].qualityTotal+=Number(p.quality);
+productsStats[name].qualityCount++;
+
+overallTotal+=Number(p.quality);
+overallCount++;
+
+}
+
+});
+
+});
+
+
+const avg=(total,count)=>{
+return count ? (total/count).toFixed(2) : "0.00";
+};
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+let html=`
+
+<div style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:25px;
+">
+
+<div class="stat">
+إجمالي التقييمات
+<b>${reviews.length}</b>
+</div>
+
+<div class="stat">
+المتوسط العام
+<b>${avg(overallTotal,overallCount)} ⭐</b>
+</div>
+
+<div class="stat">
+العلامة التجارية
+<b>${avg(brandTotal,brandCount)} ⭐</b>
+</div>
+
+<div class="stat">
+التوصيل
+<b>${avg(deliveryTotal,deliveryCount)} ⭐</b>
+</div>
+
+</div>
+
+
+<div style="
+border:1px solid #4b3916;
+border-radius:12px;
+padding:18px;
+margin-bottom:25px;
+">
+
+<h3 style="margin-top:0">
+تقييمات المنتجات
+</h3>
+`;
+
+
+/* =========================
+   PRODUCT AVERAGES
+========================= */
+
+Object.keys(productsStats).forEach(name=>{
+
+const p=productsStats[name];
+
+html+=`
+
+<div style="
+border-bottom:1px solid #4b3916;
+padding:12px 0;
+">
+
+<b>${name}</b><br>
+
+الطعم:
+${avg(p.tasteTotal,p.tasteCount)} ⭐
+
+&nbsp;&nbsp;&nbsp;
+
+الجودة:
+${avg(p.qualityTotal,p.qualityCount)} ⭐
+
+</div>
+
+`;
+
+});
+
+html+=`
+
+</div>
+
+<h3>
+آراء العملاء
+</h3>
+`;
+
+
+/* =========================
+   INDIVIDUAL REVIEWS
+========================= */
+
+reviews.slice().reverse().forEach(r=>{
+
+html+=`
+
+<div style="
+border-bottom:1px solid #4b3916;
+padding:18px 0;
+">
+
+<b>${r.customer || ""}</b><br>
+
+الطلب: ${r.orderId || ""}<br>
+
+تقييم العلامة التجارية:
+${r.brandRating || 0} ⭐<br>
+
+التوصيل::
+${
+Array.isArray(r.deliveryRating)
+? r.deliveryRating.join(" / ")
+: "0"
+} ⭐
+
+<br><br>
+`;
+
+(r.products || []).forEach(p=>{
+
+html+=`
+
+<b>${p.name || "Product"}</b><br>
+
+الطعم:
+${p.taste || 0} ⭐<br>
+
+الجودة:
+${p.quality || 0} ⭐
+
+<br><br>
+
+`;
+
+});
+
+
+html+=`
+
+Comment:
+${r.comment || "—"}
+
+</div>
+
+`;
+
+});
+
+
+list.innerHTML=html;
+
+
+}catch(e){
+
+console.log("RATINGS ERROR:",e);
+
+list.innerHTML="حدث خطأ أثناء تحميل التقييمات";
+
 }
 
 }
-loadOrders();
+async function sendPrivilege(id,phone,btn){
+
+  const ok = confirm("إرسال الامتياز عبر واتساب؟")
+  if(!ok) return;
+if(btn){
+  btn.disabled=true;
+btn.innerText='جارٍ الإرسال...';
+}
+  try{ 
+
+    const list = await fetch('/api/admin/privileges');
+    const data = await list.json();
+
+    const p = data.privileges.find(x=>x.id===id);
+
+if(!p){
+  if(btn){
+    btn.disabled=false;
+btn.innerText='إرسال عبر واتساب';
+  }
+  alert("لم يتم العثور على الامتياز");
+  return;
+}
+
+const text = `GOLDEN HONEY FUSION
+    
+Mr/Ms ${p.customer}
+تم تحديث امتياز الشراء الخاص بك بنجاح.
+
+قيمة الامتياز: $${p.earned}
+كود الامتياز: ${p.code}
+صالح لغاية: ${new Date(p.expiresAt).toLocaleDateString('en-GB')}
+
+شكراً لثقتك واختيارك.
+
+مع خالص التقدير،
+
+GHF`;
+
+    window.open(
+      `https://wa.me/${p.phone}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
+
+    const r = await fetch('/api/admin/privileges/'+id+'/sent',{
+      method:'POST'
+    });
+
+    const result = await r.json();
+
+    if(result.ok){
+      loadOrders();
+      if(btn){
+  btn.innerText='تم الإرسال ✓';
+}
+    }
+
+  }catch(e){
+  if(btn){
+  btn.disabled=false;
+btn.innerText='إرسال عبر واتساب';
+}
+    console.log(e);
+alert("فشل الإرسال");
+  }
+
+}
 
 </script>
 </body>
