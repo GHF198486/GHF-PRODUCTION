@@ -437,112 +437,84 @@ loadOrders();
 }
 
 async function loadOrders(){
-alert("LOAD ORDERS START");
+
 const box=document.getElementById("orders");
 
 try{
 
 const r=await fetch('https://ghf-production.onrender.com/api/orders');
 const data=await r.json();
+
+if(!data.orders){
+throw new Error("No orders data");
+}
+
 const p=await fetch('https://ghf-production.onrender.com/api/admin/privileges');
-const privilegesData=await p.json();
+let privilegesData={privileges:[]};
+
+if(p.ok){
+privilegesData=await p.json();
+}
+
 
 const privilegeList=document.getElementById("privilegeList");
 
+if(privilegeList){
+
 if(privilegesData.privileges && privilegesData.privileges.length){
 
-  privilegeList.innerHTML="";
+privilegeList.innerHTML="";
 
-  privilegesData.privileges.slice().reverse().forEach(p=>{
+privilegesData.privileges.slice().reverse().forEach(p=>{
 
-    privilegeList.innerHTML += `
-    <div style="border-bottom:1px solid #4b3916;padding:12px 0">
+privilegeList.innerHTML += `
+<div class="card">
+<b>${p.customer}</b><br>
+${p.message || ""}
+</div>
+`;
 
-      <b>${p.customer}</b><br>
-
-      الطلب: ${p.orderId}<br>
-
-      قيمة الشراء: $${p.amount}<br>
-
-      نسبة الامتياز: ${(p.rate*100).toFixed(1)}%<br>
-
-      قيمة الامتياز: $${p.earned}<br>
-
-      كود الامتياز: ${p.code}<br>
-
-      صالح حتى: ${new Date(p.expiresAt).toLocaleDateString('en-GB')}
-
-      ${
-        p.sent
-        ? '<button disabled style="margin-top:8px">تم الإرسال ✓</button>'
-        : `<button onclick="sendPrivilege('${p.id}','${p.phone}',this)" style="margin-top:8px">إرسال عبر واتساب</button>`
-      }
-
-    </div>
-    `;
-  });
+});
 
 }else{
 
-  privilegeList.innerHTML="ستظهر حركات الامتيازات هنا.";
+privilegeList.innerHTML="ستظهر حركات الامتيازات هنا.";
 
 }
-const reviewList=document.getElementById("reviewList");
-
-let reviewsData={reviews:[]};
-
-try{
-const reviewRes=await fetch('https://ghf-production.onrender.com/api/admin/reviews');
- reviewsData=await reviewRes.json();
-}catch(e){
- console.log("Reviews not loaded",e);
-}
-
-if(reviewsData.reviews && reviewsData.reviews.length){
-
-  reviewList.innerHTML="";
-
-  reviewsData.reviews.forEach(r=>{
-
-    reviewList.innerHTML += `
-    <div style="border-bottom:1px solid #4b3916;padding:12px 0">
-
-      <b>${r.customer}</b><br>
-
-      الطلب: ${r.orderId}<br>
-
-تاريخ الشراء:
-${new Date(r.createdAt).toLocaleDateString('en-GB')}<br>
-<button
-onclick="sendReview('${r.id}','${r.phone}',this)"
-style="margin-top:8px">
-إرسال طلب التقييم عبر واتساب
-</button>
-    </div>
-    `;
-
-  });
-
-}else{
-
-reviewList.innerHTML="ستظهر طلبات التقييم هنا.";
 
 }
+
+
 document.getElementById("totalCount").textContent=data.orders.length;
-document.getElementById("salesTotal").textContent="$"+data.orders.reduce((sum,o)=>sum+Number(o.subtotal||0),0).toFixed(2);
-document.getElementById("newCount").textContent=data.orders.filter(o=>o.status==="NEW").length;
-document.getElementById("confirmedCount").textContent=data.orders.filter(o=>o.status==="CONFIRMED").length;
-document.getElementById("shippedCount").textContent=data.orders.filter(o=>o.status==="SHIPPED").length;
-document.getElementById("deliveredCount").textContent=data.orders.filter(o=>o.status==="DELIVERED").length;
+
+document.getElementById("salesTotal").textContent=
+"$"+data.orders.reduce((sum,o)=>sum+Number(o.subtotal||0),0).toFixed(2);
+
+document.getElementById("newCount").textContent=
+data.orders.filter(o=>o.status==="NEW").length;
+
+document.getElementById("confirmedCount").textContent=
+data.orders.filter(o=>o.status==="CONFIRMED").length;
+
+document.getElementById("shippedCount").textContent=
+data.orders.filter(o=>o.status==="SHIPPED").length;
+
+document.getElementById("deliveredCount").textContent=
+data.orders.filter(o=>o.status==="DELIVERED").length;
+
+
 data.orders.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+
 
 const ordersList=document.getElementById("ordersList");
 
 ordersList.innerHTML="";
 
+
 data.orders.forEach(o=>{
 
 ordersList.innerHTML += `
+
 <div class="card"
 onclick="toggleOrder('${o.id}')"
 data-order-number="${o.orderNumber || o.id}"
@@ -553,13 +525,17 @@ style="cursor:pointer;">
 <div style="display:flex;justify-content:space-between;align-items:center">
 
 <div>
-<h3 style="margin:0">${o.orderNumber || o.id}</h3>
+
+<h3 style="margin:0">
+${o.orderNumber || o.id}
+</h3>
+
 <div style="font-size:14px;color:#aaa08f;margin-top:8px">
 ${new Date(o.createdAt).toLocaleString()}
 </div>
 
 <div style="color:#e8cf87;margin-top:8px">
-${o.customer?.name || ''}
+${o.customer?.name || ""}
 </div>
 
 <div style="color:#e8cf87">
@@ -574,41 +550,46 @@ ${o.status} — $${o.total}
 
 </div>
 
+
 <div id="order-${o.id}" style="display:none;margin-top:20px;">
 
 <hr style="border-color:#4b3916">
 
-<div class="info">
-
 <b>العميل</b>
-<p>${o.customer?.name || ''}</p>
+<p>${o.customer?.name || ""}</p>
 
 <b>الهاتف</b>
-<p>${o.customer?.phone || ''}</p>
+<p>${o.customer?.phone || ""}</p>
 
 <b>العنوان</b>
-<p>${o.customer?.address || ''}</p>
+<p>${o.customer?.address || ""}</p>
 
 <b>المنتجات</b>
+
 <p>
 ${(o.items||[]).map(i=>`
-${i.product} - ${i.weight||''} × ${i.qty||1}<br>
-`).join('')}
+${i.product} - ${i.weight||""} × ${i.qty||1}<br>
+`).join("")}
 </p>
 
+
 <b>الإجمالي</b>
+
 <p style="font-size:22px">
 $${o.total}
 </p>
 
-</div>
 
 </div>
+
 `;
 
 });
 
+
 }catch(e){
+
+console.log(e);
 
 box.innerHTML="حدث خطأ: "+e.message;
 
@@ -700,8 +681,6 @@ hideAdminPanels();
 box.style.display="block";
 
 }
-
-
 function openReviews(){
 
 const box=document.getElementById("reviewPanel");
@@ -779,9 +758,7 @@ try{
 
 const r=await fetch('/api/admin/ratings');
 const data=await r.json();
-
 const reviews=data.reviews || [];
-
 if(!reviews.length){
 list.innerHTML="لا توجد تقييمات للعملاء حتى الآن.";
 return;
