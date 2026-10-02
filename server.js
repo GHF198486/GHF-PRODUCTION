@@ -456,8 +456,8 @@ function partnerAuth(req,res,next){const h=String(req.headers.authorization||'')
 app.post('/api/partner/login',(req,res)=>{const username=String(req.body?.username||''),password=String(req.body?.password||'');if(username!==PARTNER_USERNAME||password!==PARTNER_PASSWORD)return res.status(401).json({error:'Invalid partner credentials'});const token=crypto.randomBytes(32).toString('hex'),expiresAt=Date.now()+12*60*60*1000;partnerSessions.set(token,{createdAt:Date.now(),expiresAt});res.json({ok:true,token,expiresAt:new Date(expiresAt).toISOString()});});
 app.post('/api/partner/logout',partnerAuth,(req,res)=>{const h=String(req.headers.authorization||''),token=h.startsWith('Bearer ')?h.slice(7).trim():'';partnerSessions.delete(token);res.json({ok:true});});
 app.get('/api/partner/orders',partnerAuth,(req,res)=>{try{const d=db();const orders=[...d.orders].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));res.json({ok:true,orders});}catch(e){console.error(e);res.status(500).json({error:'Could not load partner orders'});}});
-console.log("STATUS UPDATE:", req.params.id, req.body);
 app.post('/api/partner/orders/:id/status',partnerAuth,async(req,res)=>{
+console.log("STATUS UPDATE:", req.params.id, req.body);
 try{
 const d=db();
 const o=d.orders.find(x=>x.id===req.params.id);
@@ -735,9 +735,9 @@ ${customerEnglishName(c.name)}،
 وأصبح رصيد امتياز الشراء الخاص بك:
 $${money(c.benefitBalance).toFixed(2)}
 
-كود الامتياز: ${p.code}
+كود الامتياز: ${newPrivilege.code}
 
-صالح حتى: ${new Date(p.expiresAt).toLocaleDateString('en-GB')}
+صالح حتى: ${new Date(newPrivilege.expiresAt).toLocaleDateString('en-GB')}
 
 مع خالص التقدير،
 GHF`;
