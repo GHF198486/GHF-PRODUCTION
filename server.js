@@ -229,7 +229,16 @@ const order={id:id('GHF-O'),orderNumber,customerId:customer.id,customer:{...c,ph
  customer.benefitBalance=0;
  customer.benefitRate=0;
  customer.benefitExpiresAt=null;
-order.confirmUrl=`${BASE_URL}/api/orders/${order.id}/confirm?token=${order.confirmToken}`;order.shipUrl=`${BASE_URL}/api/orders/${order.id}/ship?token=${order.shipToken}`;d.orders.push(order);save(d);const partnerText=orderText(order,true),partnerWhatsAppUrl=waUrl(PARTNER_WA,partnerText);let partnerApi={sent:false};if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID)partnerApi=await sendCloud(PARTNER_WA,partnerText);res.json({ok:true,orderId:order.id,customerId:customer.id,orderUrl:`${BASE_URL}/api/orders/${order.id}`,partnerWhatsAppUrl,partnerApi});}catch(e){console.error(e);res.status(500).json({error:'Could not create order'});}});
+order.confirmUrl=`${BASE_URL}/api/orders/${order.id}/confirm?token=${order.confirmToken}`;
+order.shipUrl=`${BASE_URL}/api/orders/${order.id}/ship?token=${order.shipToken}`;
+
+d.orders.push(order);
+save(d);
+
+console.log("NEW ORDER SAVED:", order.id, order.status);
+
+const partnerText=orderText(order,true),
+partnerWhatsAppUrl=waUrl(PARTNER_WA,partnerText);let partnerApi={sent:false};if(process.env.WHATSAPP_ACCESS_TOKEN&&process.env.WHATSAPP_PHONE_NUMBER_ID)partnerApi=await sendCloud(PARTNER_WA,partnerText);res.json({ok:true,orderId:order.id,customerId:customer.id,orderUrl:`${BASE_URL}/api/orders/${order.id}`,partnerWhatsAppUrl,partnerApi});}catch(e){console.error(e);res.status(500).json({error:'Could not create order'});}});
 
 app.get('/api/orders',(req,res)=>{
   try{
