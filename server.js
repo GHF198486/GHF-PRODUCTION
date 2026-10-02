@@ -618,9 +618,9 @@ ${customerEnglishName(c.name)}،
 ⭐ مستوى الامتياز: ${(c.benefitRate*100).toFixed(1)}%
 ⭐ رصيد الامتياز الحالي: $${money(c.benefitBalance).toFixed(2)}
 
-كود الامتياز: ${p.code}
+كود الامتياز: ${newPrivilege.code}
 
-صالح حتى: ${new Date(p.expiresAt).toLocaleDateString('en-GB')}
+صالح حتى: ${new Date(newPrivilege.expiresAt).toLocaleDateString('en-GB')}
 
 نقدّر ثقتك ونتطلع لتجربة جديدة مع Golden Honey Fusion.
 
@@ -637,12 +637,10 @@ save(d);
 
 res.json({ok:true,order:o});
 
-
-catch(e){
+}catch(e){
  console.error("STATUS ERROR:", e);
  res.status(500).json({error:'Could not update order status'});
 }
-
 });
 app.get('/api/partner/orders/:id/status-message',partnerAuth,(req,res)=>{try{const d=db(),o=d.orders.find(x=>x.id===req.params.id);if(!o)return res.status(404).json({error:'Order not found'});const statusText={NEW:'Your order has been received.',CONFIRMED:'Your order has been confirmed.',SHIPPED:'Your order has been shipped and is out for delivery.',DELIVERED:'Your order has been delivered. Thank you for choosing Golden Honey Fusion.'}[o.status]||('Your order status is '+o.status+'.');res.json({ok:true,message:`Golden Honey Fusion\n\nOrder ${o.id}\n${statusText}`});}catch(e){console.error(e);res.status(500).json({error:'Could not prepare status message'});}});
 
