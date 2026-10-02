@@ -456,6 +456,7 @@ function partnerAuth(req,res,next){const h=String(req.headers.authorization||'')
 app.post('/api/partner/login',(req,res)=>{const username=String(req.body?.username||''),password=String(req.body?.password||'');if(username!==PARTNER_USERNAME||password!==PARTNER_PASSWORD)return res.status(401).json({error:'Invalid partner credentials'});const token=crypto.randomBytes(32).toString('hex'),expiresAt=Date.now()+12*60*60*1000;partnerSessions.set(token,{createdAt:Date.now(),expiresAt});res.json({ok:true,token,expiresAt:new Date(expiresAt).toISOString()});});
 app.post('/api/partner/logout',partnerAuth,(req,res)=>{const h=String(req.headers.authorization||''),token=h.startsWith('Bearer ')?h.slice(7).trim():'';partnerSessions.delete(token);res.json({ok:true});});
 app.get('/api/partner/orders',partnerAuth,(req,res)=>{try{const d=db();const orders=[...d.orders].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));res.json({ok:true,orders});}catch(e){console.error(e);res.status(500).json({error:'Could not load partner orders'});}});
+console.log("STATUS UPDATE:", req.params.id, req.body);
 app.post('/api/partner/orders/:id/status',partnerAuth,async(req,res)=>{
 try{
 const d=db();
@@ -637,14 +638,9 @@ save(d);
 res.json({ok:true,order:o});
 
 
-}catch(e){
-
-console.error(e);
-
-res.status(500).json({
-error:'Could not update order status'
-});
-
+catch(e){
+ console.error("STATUS ERROR:", e);
+ res.status(500).json({error:'Could not update order status'});
 }
 
 });
