@@ -297,20 +297,7 @@ font-size:20px;
 <h1>لوحة إدارة<br>GOLDEN HONEY FUSION</h1>
 
 <button onclick="loadOrders()">تحديث</button>
-<button onclick="openRatings()">تقييمات وآراء العملاء</button>
-<div id="ratingPanel" class="card" style="display:none;width:100%;margin-top:20px;">
 
-<h3>تقييمات وآراء العملاء</h3>
-
-<p style="color:#e8cf87">
-✦ ✦ ✦ ✦ ✦
-</p>
-
-<div id="ratingList">
-جاري تحميل التقييمات...
-</div>
-
-</div>
 <div id="stats" style="
 display:flex;
 gap:15px;
@@ -325,8 +312,12 @@ margin:20px 0;
 <div class="stat">تم التأكيد <b id="confirmedCount">0</b></div>
 <div class="stat">تم الشحن <b id="shippedCount">0</b></div>
 <div class="stat">تم التسليم <b id="deliveredCount">0</b></div>
+
 </div>
+
+
 <div class="admin-sections">
+
 <div class="admin-section" onclick="openOrders()">
 
 الطلبات
@@ -358,6 +349,18 @@ margin:20px 0;
 </div>
 
 </div>
+
+<div class="admin-section" onclick="openRatings()">
+
+تقييمات وآراء العملاء
+
+<div class="gold-stars">
+✦ ✦ ✦ ✦ ✦
+</div>
+
+</div>
+
+
 </div>
 <div id="privilegePanel" class="card" style="display:none;width:100%;margin-top:20px;">
 
