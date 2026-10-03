@@ -55,6 +55,20 @@
       "benefitUsedOrderId": null,
       "createdAt": "2026-09-21T11:10:03.807Z",
       "updatedAt": "2026-09-29T17:36:23.691Z"
+    },
+    {
+      "id": "GHF-C-A565338A0B",
+      "phone": "76839195",
+      "name": "يا حسين",
+      "privilegeCode": "109855",
+      "purchases": 0,
+      "consecutivePurchases": 0,
+      "benefitRate": 0,
+      "benefitBalance": 0,
+      "benefitExpiresAt": null,
+      "benefitUsedOrderId": "GHF-O-E3462B7615",
+      "createdAt": "2026-10-01T19:50:33.562Z",
+      "updatedAt": "2026-10-02T04:27:17.171Z"
     }
   ],
   "orders": [
@@ -1987,6 +2001,170 @@
       "shipToken": "9af1f946c022b58f72e3363b77eaac111965",
       "confirmUrl": "http://localhost:3000/api/orders/GHF-O-095944C5D7/confirm?token=ee2f63757b6950983284e2dfa91d0834eca7",
       "shipUrl": "http://localhost:3000/api/orders/GHF-O-095944C5D7/ship?token=9af1f946c022b58f72e3363b77eaac111965"
+    },
+    {
+      "id": "GHF-O-31AC9B90AD",
+      "orderNumber": "GHF-0034",
+      "customerId": "GHF-C-A565338A0B",
+      "customer": {
+        "name": "ربيع ح",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "1000 G",
+          "price": 30,
+          "qty": 1,
+          "lineTotal": 30
+        }
+      ],
+      "subtotal": 30,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 30,
+      "deliveryFee": 5,
+      "total": 35,
+      "status": "SHIPPED",
+      "createdAt": "2026-10-01T19:50:33.563Z",
+      "confirmedAt": "2026-10-02T10:58:13.454Z",
+      "shippedAt": "2026-10-02T10:58:15.446Z",
+      "deliveredAt": null,
+      "confirmToken": "87d5f6dcb9e75d712798830173557bab0f92",
+      "shipToken": "31e4737d0a0886c4309faa3006833c0c1d3a",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-31AC9B90AD/confirm?token=87d5f6dcb9e75d712798830173557bab0f92",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-31AC9B90AD/ship?token=31e4737d0a0886c4309faa3006833c0c1d3a"
+    },
+    {
+      "id": "GHF-O-3D1432EBDE",
+      "orderNumber": "GHF-0035",
+      "customerId": "GHF-C-A565338A0B",
+      "customer": {
+        "name": "يا صاحب الزمان",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "1000 G",
+          "price": 30,
+          "qty": 1,
+          "lineTotal": 30
+        }
+      ],
+      "subtotal": 30,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 30,
+      "deliveryFee": 5,
+      "total": 35,
+      "status": "SHIPPED",
+      "createdAt": "2026-10-01T21:22:10.304Z",
+      "confirmedAt": "2026-10-02T10:58:13.002Z",
+      "shippedAt": "2026-10-02T10:58:14.911Z",
+      "deliveredAt": null,
+      "confirmToken": "614d51e507778c6eff5c4dbaf596d26eaea8",
+      "shipToken": "c9b76716ca7bef113417a4a5ea83f27d5063",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-3D1432EBDE/confirm?token=614d51e507778c6eff5c4dbaf596d26eaea8",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-3D1432EBDE/ship?token=c9b76716ca7bef113417a4a5ea83f27d5063"
+    },
+    {
+      "id": "GHF-O-D2F6824DBE",
+      "orderNumber": "GHF-0036",
+      "customerId": "GHF-C-A565338A0B",
+      "customer": {
+        "name": "يا صاحب",
+        "phone": "76839195",
+        "province": "North Lebanon",
+        "city": "Nabatie",
+        "address": "Nabatye street",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل الزعتر",
+          "arabic": "عسل الزعتر",
+          "weight": "1000 G",
+          "price": 30,
+          "qty": 1,
+          "lineTotal": 30
+        }
+      ],
+      "subtotal": 30,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 30,
+      "deliveryFee": 5,
+      "total": 35,
+      "status": "SHIPPED",
+      "createdAt": "2026-10-01T22:27:05.653Z",
+      "confirmedAt": "2026-10-02T10:58:12.445Z",
+      "shippedAt": "2026-10-02T10:58:14.400Z",
+      "deliveredAt": null,
+      "confirmToken": "ebcc96ddd57c433c0f874e6fbab141508218",
+      "shipToken": "831652722d7d6b49e6813bd4ef32817a9829",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-D2F6824DBE/confirm?token=ebcc96ddd57c433c0f874e6fbab141508218",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-D2F6824DBE/ship?token=831652722d7d6b49e6813bd4ef32817a9829"
+    },
+    {
+      "id": "GHF-O-E3462B7615",
+      "orderNumber": "GHF-0037",
+      "customerId": "GHF-C-A565338A0B",
+      "customer": {
+        "name": "يا حسين",
+        "phone": "76839195",
+        "province": "Bekaa",
+        "city": "بعلبك",
+        "address": "Bekaa",
+        "floor": "",
+        "notes": "",
+        "privilegeCode": "",
+        "location": null
+      },
+      "items": [
+        {
+          "product": "عسل جبلي بري",
+          "arabic": "عسل جبلي بري",
+          "weight": "1000 G",
+          "price": 75,
+          "qty": 2,
+          "lineTotal": 150
+        }
+      ],
+      "subtotal": 150,
+      "discountCode": null,
+      "discountAmount": 0,
+      "discountedSubtotal": 150,
+      "deliveryFee": 5,
+      "total": 155,
+      "status": "SHIPPED",
+      "createdAt": "2026-10-02T04:27:17.187Z",
+      "confirmedAt": "2026-10-02T04:29:25.302Z",
+      "shippedAt": "2026-10-02T04:29:33.539Z",
+      "deliveredAt": null,
+      "confirmToken": "e6ba6820bce70640950d1b4113804841519b",
+      "shipToken": "d8f7883789edf1f5fc39c3f6ae6543599908",
+      "confirmUrl": "http://localhost:3000/api/orders/GHF-O-E3462B7615/confirm?token=e6ba6820bce70640950d1b4113804841519b",
+      "shipUrl": "http://localhost:3000/api/orders/GHF-O-E3462B7615/ship?token=d8f7883789edf1f5fc39c3f6ae6543599908"
     }
   ],
   "privileges": [
